@@ -1,0 +1,78 @@
+﻿@model IEnumerable<FYPWEB.Models.TaskDone>
+
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Event";
+}
+
+<h2>Daily Tasks</h2>
+<p>Total Points:</p>@ViewBag.point
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:20%">
+                Task Name
+            </th>
+            <th style="width:30%">
+                Task Difficulty
+            </th>
+            <th style="width:20%">
+                Point (Pts)
+            </th>
+            <th width="30%"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            DateTime dt = DateTime.Now;
+            var theday = dt.DayOfWeek.ToString();
+
+            if (item.TaskDay == theday && item.Done != "1" && item.User == @UserManager.GetUserName(User))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskDifficulty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskPoint)
+                    </td>
+                    <td>
+                        <a asp-area="" asp-controller="TaskDone" asp-action="AddPoint" asp-route-id="@item.TaskID"><button type="button" class="btn btn-info btn-lg">Done</button></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<br/>
+<div>
+    <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-default">BACK</button></a>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+@*chatbot script*@
+<script src="https://account.snatchbot.me/script.js"></script>
+<script>window.sntchChat.Init(93986)</script>
+
+
+@*<script>
+        $(function () {
+            $('#like').prop('disabled', $.cookie('like'));
+            $('.vote').click(function () {
+                $.cookie(this.id, 'true', { expires: 1 });
+                $(this).prop('disabled', true);
+                alert('Thanks');
+            });
+        });
+
+    </script>*@

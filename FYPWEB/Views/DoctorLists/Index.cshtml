@@ -1,0 +1,73 @@
+﻿@model IEnumerable<FYPWEB.Models.DoctorList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Doctor List</h2>
+
+<p>
+    <a asp-action="Create"><button type="button" class="btn btn-success">Create New Entry</button></a>
+</p>
+<form>
+    <p>
+        <!--HTML Comment: Type the task name column-->
+        Doctor Name : <input type="text" name="SearchString">
+        <br />
+        <br />
+        <!--prepare a dropdownlist for the Country-->
+        Country : @Html.DropDownList("Type", "All")
+        <input type="Submit" value="Search Doctor" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th width="15%">
+                Doctor's Name
+            </th>
+            <th width="15%">
+                Doctor's Email
+            </th>
+            <th width="20%">
+                Doctor's Address
+            </th>
+            <th width="10%">
+                State
+            </th>
+            <th width="10%">
+                Country
+            </th>
+            <th width="30%"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID"><button type="button" class="btn btn-success">EDIT</button></a>
+                <a asp-action="Details" asp-route-id="@item.ID"><button type="button" class="btn btn-info">DETAILS</button></a>
+                <a asp-action="Delete" asp-route-id="@item.ID"><button type="button" class="btn btn-danger">DELETE</button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Home" asp-action="Admin"><button type="button" class="btn btn-default">BACK</button></a>
+</div>

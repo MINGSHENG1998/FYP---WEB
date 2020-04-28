@@ -1,0 +1,58 @@
+﻿@model IEnumerable<FYPWEB.Models.Consultation>
+@{
+    ViewData["Title"] = "AppointmentView";
+}
+
+<h2>Appointment Booking</h2>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Doctor's ID
+            </th>
+            <th>
+                Doctor's ID Name
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Time
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.DocID == @ViewBag.did)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DocID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DocName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Time)
+                    </td>
+                    <td>
+                        <a asp-area="" asp-controller="Appointments" asp-action="Book" asp-route-id="@item.ID"><button type="button" class="btn btn-info btn-lg">Book</button></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-controller="DoctorLists" asp-action="DoctorProfile"><button type="button" class="btn btn-default">BACK</button></a>
+</div>

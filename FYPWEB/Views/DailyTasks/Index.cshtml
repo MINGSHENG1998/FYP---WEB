@@ -1,0 +1,67 @@
+﻿@model IEnumerable<FYPWEB.Models.DailyTask>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Task List</h2>
+
+<p>
+    <a asp-action="Create"><button type="button" class="btn btn-success">Create New Entry</button></a>
+</p>
+<form>
+    <p>
+        <!--HTML Comment: Type the task name column-->
+        Task Name : <input type="text" name="SearchString">
+        <br />
+        <br />
+        <!--prepare a dropdownlist for the Day-->
+        Day : @Html.DropDownList("Type", "All")
+        <input type="Submit" value="Search Task" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th width="30%">
+                Task Name
+            </th>
+            <th width="15%">
+                Day of The Week
+            </th>
+            <th width="15%">
+                Difficulty
+            </th>
+            <th width="10%">
+                Point (Pts)
+            </th>
+            <th width="30%"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Day)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Difficulty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Point)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID"><button type="button" class="btn btn-success">EDIT</button></a>
+                <a asp-action="Details" asp-route-id="@item.ID"><button type="button" class="btn btn-info">DETAILS</button></a>
+                <a asp-action="Delete" asp-route-id="@item.ID"><button type="button" class="btn btn-danger">DELETE</button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Home" asp-action="Admin"><button type="button" class="btn btn-default">BACK</button></a>
+</div>

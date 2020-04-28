@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FYPWEB.Models.Shop>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Product List</h2>
+
+<p>
+    <a asp-action="Create"><button type="button" class="btn btn-success">Create New Entry</button></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th width="20%">
+                Product Name
+            </th>
+            <th width="20%">
+                Description
+            </th>
+            <th width="10%">
+                Cost (Pts)
+            </th>
+            <th width="20%">
+                Image 
+            </th>
+            <th width="30%"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Info)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td width="20%">
+                <img src="@Html.DisplayFor(modelItem => item.Pic)" style="width:120px" />
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID"><button type="button" class="btn btn-success">EDIT</button></a> 
+                <a asp-action="Details" asp-route-id="@item.ID"><button type="button" class="btn btn-info">DETAILS</button></a> 
+                <a asp-action="Delete" asp-route-id="@item.ID"><button type="button" class="btn btn-danger">DELETE</button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Home" asp-action="Admin"><button type="button" class="btn btn-default">BACK</button></a>
+</div>

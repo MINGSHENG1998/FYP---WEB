@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FYPWEB.Models.DoctorList>
+
+@{
+    ViewData["Title"] = "DoctorProfile";
+}
+
+<h2>Doctor Profile</h2>
+
+<form>
+    <p>
+        <!--HTML Comment: Type the task name column-->
+        Doctor Name : <input type="text" name="SearchString">
+        <br />
+        <br />
+        <!--prepare a dropdownlist for the Country-->
+        Country : @Html.DropDownList("Type", "All")
+        <input type="Submit" value="Search Doctor" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                <a asp-controller="Consultations" asp-action="AppointmentView" asp-route-id="@item.ID"><button type="button" class="btn btn-info btn-lg">Select</button></a>
+            </td>
+        </tr>
+    }
+
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Appointments" asp-action="Index"><button type="button" class="btn btn-default">BACK</button></a>
+</div>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FYPWEB.Models.Points>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Manage Point</h2>
+
+<p>
+    <a asp-action="Create"><button type="button" class="btn btn-success">Create New Entry</button></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                User's Name
+            </th>
+            <th>
+                Total Point
+            </th>
+            <th width="30%"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPoint)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID"><button type="button" class="btn btn-success">EDIT</button></a>
+                <a asp-action="Details" asp-route-id="@item.ID"><button type="button" class="btn btn-info">DETAILS</button></a>
+                <a asp-action="Delete" asp-route-id="@item.ID"><button type="button" class="btn btn-danger">DELETE</button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

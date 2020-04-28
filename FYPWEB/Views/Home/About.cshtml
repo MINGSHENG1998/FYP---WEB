@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<p>Use this area to provide additional information.</p>
+@*chatbot script*@
+<script src="https://account.snatchbot.me/script.js"></script>
+<script>window.sntchChat.Init(93986)</script>
+
+<br />
+<div>
+    <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-default">BACK</button></a>
+</div>

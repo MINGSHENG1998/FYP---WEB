@@ -1,0 +1,42 @@
+﻿@model FYPWEB.Models.DailyTask
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DailyTask</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Task Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TaskName)
+        </dd>
+        <dt>
+            Day of The Week
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Day)
+        </dd>
+        <dt>
+            Difficulty
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Difficulty)
+        </dd>
+        <dt>
+            Point (Pts)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Point)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID"><button type="button" class="btn btn-success">EDIT</button></a>
+    <a asp-action="Index"><button type="button" class="btn btn-default">BACK</button></a>
+</div>

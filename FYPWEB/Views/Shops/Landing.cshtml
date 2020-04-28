@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Landing";
+}
+
+<h2>@ViewBag.Goal</h2>
+<h3>@ViewBag.Code</h3>
+
+<p>Your Remaining Points: </p>@ViewBag.Point 
+<br/>
+<br/>
+<a asp-area="" asp-controller="Shops" asp-action="Redeem" ><button type="button" class="btn btn-info btn-lg">Back</button></a>

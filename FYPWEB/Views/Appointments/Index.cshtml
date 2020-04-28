@@ -1,0 +1,65 @@
+﻿@model IEnumerable<FYPWEB.Models.Appointment>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Appointments List</h2>
+
+<p>
+    <a asp-controller="DoctorLists" asp-action="DoctorProfile"><button type="button" class="btn btn-success">Create New Entry</button></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th width="15%">
+                Doctor's ID
+            </th>
+            <th width="25%">
+                Doctor's Name
+            </th>
+            <th width="20%">
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th width="20%">
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th width="20%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            DateTime dt = DateTime.Now;
+            if (item.UserName == @UserManager.GetUserName(User) && item.Date > dt)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DocID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DocName)
+                    </td>
+                    <td>
+                        @item.Date.ToString("MM/dd/yyyy")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Time)
+                    </td>
+                    <td>
+                        <a asp-area="" asp-controller="Appointments" asp-action="Remove" asp-route-id="@item.ConsultationID"><button type="button" class="btn btn-info btn-lg">Cancel</button></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-default">BACK</button></a>
+</div>
+@*chatbot script*@
+<script src="https://account.snatchbot.me/script.js"></script>
+<script>window.sntchChat.Init(93986)</script>

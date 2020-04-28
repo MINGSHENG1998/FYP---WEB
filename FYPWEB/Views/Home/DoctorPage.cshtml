@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "DoctorPage";
+}
+
+<h2>Doctor Page</h2>
+<p>Doctor Action</p>
+<br/>
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4 polaroid">
+        <a asp-area="" asp-controller="Consultations" asp-action="Index"><img width="390" style="border-radius: 25px;" src="https://149348465.v2.pressablecdn.com/wp-content/uploads/2016/08/hero-20-tips-for-fitting-school-into-your-busy-life.jpg" alt="Manage Consultation Time" title="Manage Consultation Time" /></a>
+        
+            <h3 style="text-align:center"><a style="color:#004CC4" asp-area="" asp-controller="Consultations" asp-action="Index">Manage Consultation Time</a></h3>
+            <h4 style="text-align:center">Publish and Manage Your Consultation Time!</h4>
+        
+    </div>
+    <div class="col-sm-2"></div>
+
+    <div class="col-sm-4 polaroid">
+        <a asp-area="" asp-controller="Appointments" asp-action="Indexdoc"><img width="390" style="border-radius: 25px;" src="https://telemedi.co/en/blog/wp-content/uploads/2019/01/rawpixel-665349-unsplash-1024x668.jpg" alt="Manage Appointment" title="Manage Appointment" /></a>
+        
+            <h3 style="text-align:center">
+                <a style="color:#004CC4" asp-area="" asp-controller="Appointments" asp-action="Indexdoc">Manage Appointment</a></h3style="text-align:center">
+                <h4 style="text-align:center">Manage your Appointment with your patient!</h4>
+       
+    </div>
+    <div class="col-sm-1"></div>
+    
+</div>
+
+    @*<li><a asp-area="" asp-controller="Consultations" asp-action="Index"><button type="button" class="btn btn-info btn-lg">Manage Consultation Time</button></a></li>
+        <br />
+        <li><a asp-area="" asp-controller="Appointments" asp-action="Indexdoc"><button type="button" class="btn btn-info btn-lg">Manage Appointment</button></a></li>*@
+    <br />
+    <div>
+        <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-default">BACK</button></a>
+    </div>
+
+
+    <style>
+        
+        div.polaroid {
+            background-color: rgba(232,232,232,0.5);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 25px;
+            border-radius:25px;
+        }
+
+    </style>

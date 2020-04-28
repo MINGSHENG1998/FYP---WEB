@@ -1,0 +1,30 @@
+﻿@model FYPWEB.Models.Points
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Points</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            User's Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User)
+        </dd>
+        <dt>
+            Total Point
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalPoint)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID"><button type="button" class="btn btn-success">EDIT</button></a>
+    <a asp-action="Index"><button type="button" class="btn btn-default">BACK</button></a>
+</div>

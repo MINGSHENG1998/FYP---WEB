@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FYPWEB</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body style="background-image:url('https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-037.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: 100% 100%;">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><img src="https://i.imgur.com/iEug4tL.png" style="height:55px" alt=""></a>}
+            </div>
+            <div class="navbar-collapse collapse">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                <ul class="nav navbar-nav">
+                    @*<li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                      <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
+                    <li><a asp-area="" asp-controller="Home" asp-action="Chatbot">Chat Bot</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="ChatRoom">Chat Room</a></li>
+                    <li><a asp-area="" asp-controller="TaskDone" asp-action="Event">Daily Tasks</a></li>
+                    <li><a asp-area="" asp-controller="Shops" asp-action="Redeem">Shops</a></li>
+                    <li><a asp-area="" asp-controller="Appointments" asp-action="Index">Consultation</a></li>                    
+                    @if (@UserManager.GetUserName(User) == "admin@gmail.com")
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Admin">Admin Page</a></li>
+                    }
+                    @if (@UserManager.GetUserName(User) == "Doc@gmail.com" || @UserManager.GetUserName(User) == "xxxmingshengxxx@gmail.com")
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="DoctorPage">Doctor Page</a></li>
+                    }
+                </ul>
+                }
+                    <partial name="_LoginPartial" />
+                </div>
+        </div>
+    </nav>
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+
+
+            <p>&copy; 2020 - FYPWEB</p>
+        </footer>
+    </div>
+
+
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

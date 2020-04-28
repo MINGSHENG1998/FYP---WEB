@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<h2>Admin Page</h2>
+<p>Admin Action</p>
+<br />
+
+    <div class="row">
+        <div class="col-md-4 polaroid">
+            <a asp-area="" asp-controller="DailyTasks" asp-action="Index"><img width="356" style="border-radius: 25px;" src="https://us.123rf.com/450wm/goodluz/goodluz1510/goodluz151000210/46410613-students-with-teacher-working-on-project-around-table.jpg?ver=6" alt="Manage Task" title="Manage Task" /></a>
+            <h3 style="text-align:center"><a style="color:#004CC4" asp-area="" asp-controller="DailyTasks" asp-action="Index">Manage Task</a></h3>
+            <h4 style="text-align:center">Manage the daily task for the user!</h4>
+        </div>
+
+        <div class="col-md-4 polaroid" style="margin-left:50px; margin-right:50px">
+            <a asp-area="" asp-controller="DoctorLists" asp-action="Index"><img width="356" style="border-radius: 25px;" src="https://cleveland-bookkeeping.com/wp-content/uploads/2016/03/shutterstock_155141132-960x640.jpg" alt="Manage Doctor" title="Manage Doctor" /></a>
+            <h3 style="text-align:center"><a style="color:#004CC4" asp-area="" asp-controller="DoctorLists" asp-action="Index">Manage Doctor</a></h3>
+            <h4 style="text-align:center">Register new Doctor or manage them!</h4>
+        </div>
+
+        <div class="col-md-4 polaroid">
+            <a asp-area="" asp-controller="Shops" asp-action="Index"><img width="356" style="border-radius: 25px;" src="https://previews.123rf.com/images/mangpor2004/mangpor20041803/mangpor2004180300078/97587743-e-coupon-discount-coupon-web-banner-over-blur-grocery-background-shopping-on-line-promotion-on-line-.jpg" alt="Manage Product" title="Manage Product" /></a>
+            <h3 style="text-align:center">
+                <a style="color:#004CC4" asp-area="" asp-controller="Shops" asp-action="Index">Manage Product</a></h3style="text-align:center">
+                <h4 style="text-align:center">Manage the e-coupon in the e-shop!</h4>
+        </div>
+    </div>
+<br/>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4 polaroid">
+            <a href="https://account.snatchbot.me/edit/93986"><img width="390" height="250" style="border-radius: 25px;" src="https://www.ebo.ai/wp-content/uploads/2017/09/image2ai.png" alt="Manage Chatbot" title="Manage Chatbot" /></a>
+
+            <h3 style="text-align:center"><a style="color:#004CC4" href="https://account.snatchbot.me/edit/93986">Manage Chatbot</a></h3>
+            <h4 style="text-align:center">Train and Manage the Chatbot!</h4>
+
+        </div>
+        <div class="col-sm-2"></div>
+
+        <div class="col-sm-4 polaroid">
+            <a href="https://minnit.chat/chatsettings?chat=HAPPYROOM" ><img width="390" height="250" style="border-radius: 25px;" src="https://homebusinessmag.com/wp-content/uploads/2018/02/live-chat-e1517604737940.jpg" alt="Manage Chatroom" title="Manage Chatroom" /></a>
+
+            <h3 style="text-align:center">
+                <a style="color:#004CC4" href="https://minnit.chat/chatsettings?chat=HAPPYROOM">Manage Chatroom</a></h3style="text-align:center">
+                <h4 style="text-align:center">Manage and Configure Chatroom!</h4>
+
+        </div>
+        <div class="col-sm-1"></div>
+
+    </div>
+
+
+    @*<li><a asp-area="" asp-controller="DailyTasks" asp-action="Index"><button type="button" class="btn btn-info btn-lg">Manage Task</button></a></li>
+        <br />
+        <li><a asp-area="" asp-controller="DoctorLists" asp-action="Index"><button type="button" class="btn btn-info btn-lg">Manage Doctor</button></a></li>
+        <br/>
+        <li><a asp-area="" asp-controller="Shops" asp-action="Index"><button type="button" class="btn btn-info btn-lg">Manage Product</button></a></li>
+        <br/>*@
+    <br />
+    <div>
+        <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-default">BACK</button></a>
+    </div>
+
+    <style>
+
+        div.polaroid {
+            width: auto;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 25px;
+            background-color: rgba(232,232,232,0.5);
+            border-radius: 25px;
+        }
+    </style>
+

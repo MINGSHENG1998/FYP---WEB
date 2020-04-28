@@ -1,0 +1,71 @@
+﻿@model IEnumerable<FYPWEB.Models.Appointment>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Indexdoc";
+}
+
+<h2>Manage Appointment</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th width="10%">
+                User's ID
+            </th>
+            <th width="20%">
+                User's Name
+            </th>
+            <th width="15%">
+                Date
+            </th>
+            <th width="10%">
+                Time
+            </th>
+            <th width="15%">
+                Consultation ID
+            </th>
+            <th width="30%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            DateTime dt = DateTime.Now;
+            if (item.DocID == @ViewBag.did && item.Date > dt)
+            {
+                <tr>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @item.Date.ToString("MM/dd/yyyy")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Time)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ConsultationID)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID"><button type="button" class="btn btn-success">EDIT</button></a>
+                        <a asp-action="Details" asp-route-id="@item.ID"><button type="button" class="btn btn-info">DETAILS</button></a>
+                        <a asp-action="Delete" asp-route-id="@item.ID"><button type="button" class="btn btn-danger">DELETE</button></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Home" asp-action="DoctorPage"><button type="button" class="btn btn-default">BACK</button></a>
+</div>

@@ -1,0 +1,33 @@
+﻿@model FYPWEB.Models.Points
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Points</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            User's Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User)
+        </dd>
+        <dt>
+            Total Point
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalPoint)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="DELETE" class="btn btn-danger" />
+        <a asp-action="Index"><button type="button" class="btn btn-default">BACK</button></a>
+    </form>
+</div>
